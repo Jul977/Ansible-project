@@ -30,7 +30,7 @@
 
     - name: download application code from github
       get_url:
-        url: https://github.com/azeezsalu/techmax/archive/refs/heads/main.zip
+        url: https://github.com/Jul977/Ansible-project/archive/refs/heads/master.zip
         dest: /var/www/html/
 
     - name: install unzip on the target server
@@ -40,25 +40,25 @@
 
     - name: unzip the zip folder
       unarchive:
-        src: /var/www/html/techmax-main.zip
+        src: /var/www/html/Ansible-project-master.zip
         dest: /var/www/html
         remote_src: yes
 
     - name: copy application code from the application directory to the html directory
       copy:
-        src: /var/www/html/techmax-main/
+        src: /var/www/html/Ansible-project-master/
         dest: /var/www/html
         remote_src: yes
       notify: Restart Application Service
 
     - name: remove the application directory
       file:
-        path: /var/www/html/techmax-main
+        path: /var/www/html/Ansible-project-master
         state: absent
 
     - name: remove the application.zip folder
       file:
-        path: /var/www/html/techmax-main.zip
+        path: /var/www/html/Ansible-project-master.zip
         state: absent
 
   handlers:
