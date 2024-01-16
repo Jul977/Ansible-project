@@ -3,6 +3,8 @@
 - name: Deploy my application to all ubuntu webservers running in AWS
   hosts: webservers
   become: true
+  vars:
+    base_path: /var/www/html  
 
   tasks:
     - name: update ec2 instance
@@ -26,12 +28,12 @@
         enabled: yes
 
     - name: change directory to the html directory
-      shell: cd /var/www/html
+      shell: cd "{{base_path}}"
 
     - name: download application code from github
       get_url:
         url: https://github.com/Jul977/Ansible-project/archive/refs/heads/master.zip
-        dest: /var/www/html/
+        dest: "{{base_path}}/"
 
     - name: install unzip on the target server
       apt:
@@ -40,25 +42,25 @@
 
     - name: unzip the zip folder
       unarchive:
-        src: /var/www/html/Ansible-project-master.zip
-        dest: /var/www/html
+        src: "{{base_path}}/Ansible-project-master.zip"
+        dest: "{{base_path}}"
         remote_src: yes
 
     - name: copy application code from the application directory to the html directory
       copy:
-        src: /var/www/html/Ansible-project-master/
-        dest: /var/www/html
+        src: "{{base_path}}/Ansible-project-master/"
+        dest: "{{base_path}}"
         remote_src: yes
       notify: Restart Application Service
 
     - name: remove the application directory
       file:
-        path: /var/www/html/Ansible-project-master
+        path: "{{base_path}}/Ansible-project-master"
         state: absent
 
     - name: remove the application.zip folder
       file:
-        path: /var/www/html/Ansible-project-master.zip
+        path: "{{base_path}}/Ansible-project-master.zip"
         state: absent
 
   handlers:
