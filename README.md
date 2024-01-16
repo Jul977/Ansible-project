@@ -1,4 +1,4 @@
-# Automatong the Deployment of web application on multiple EC2 servers using Ansible
+# Automating the Deployment of web application on multiple EC2 servers using Ansible
 
 Ansible is an open-source automation tool, or platform, used for IT tasks such as configuration management, application deployment, intraservice orchestration, and provisioning.
 In this project we will be using ansible to automate application deployment on our EC2 servers.
