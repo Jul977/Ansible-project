@@ -33,11 +33,13 @@ Connect to our target servers on the AWS console using EC2 instance connect
 
 We are going to be configuring 3 target servers.
 
-Then run below commands
+Run below commands
 - ssh-keygen;  used to generate our key pair
 - nano cd /home/ubuntu/.ssh/authorized_keys
 
-Then paste the public key of the ansible server and save
+Paste the public key of the ansible server and save
+
+Repeat above process for the 2 target servers.
 
 Our ansible server has now been successfully configured for passwordless authentication.
 
@@ -58,7 +60,7 @@ Finally it is time to write our playbook
 ![Alt text](picture/4.JPG)
 
 Then run below command to deploy our application across our target servers
-ansible-playbook -i inventory myplaybook.yml
+- ansible-playbook -i inventory myplaybook.yml
 
 ## Output
 We can see ansible has successfully deployed our application
