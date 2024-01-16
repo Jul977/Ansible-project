@@ -8,6 +8,8 @@ We are going to be using Vscode as our code editor
 We are going to deploy 4 EC2 instances running ubuntu distribution on our AWS management console
 One of the instance is going to be confgiured as our ansible server while the other 3 are going to be configured as our target server like so
 
+![Alt text](picture/1.JPG)
+
 ### Install ansible
 We are going to configure one of our ec2 instance as the ansible server.
 Use below command to install ansible
@@ -15,6 +17,8 @@ sudo apt update
 sudo apt install ansible
 We need to verify ansible has been installed on our ansible server; use below command
 ansible –-version
+
+![Alt text](picture/2.JPG)
 
 ### Configure Passwordless authentication on our target server
 Ansible needs passwordless authentication to be able to seamlessly run our planybooks on the target server
@@ -39,9 +43,9 @@ Our ansible server has now been successfully configured for passwordless authent
 Run below ansible adhoc command on the ansible server
 ansible servers -m ping -i inventory
 
+![Alt text](picture/3.JPG)
 
 ## Write ansible playbook
-
 Finally it is time to write our playbook
 
 Clone my application directory, myplaybook.yml and my inventory file
@@ -49,6 +53,7 @@ Replace the webserver IP addresses with the IP of your target servers
 Check our playbook for syntax errors using below command
 ansible-playbook -i inventory myplaybook.yml --syntax-check
 
+![Alt text](picture/4.JPG)
 
 Then run below command to deploy our application across our target servers
 
