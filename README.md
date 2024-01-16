@@ -16,7 +16,7 @@ In this project we will be using ansible to automate application deployment on o
   - sudo apt update
   - sudo apt install ansible
 - We need to verify ansible has been installed on our ansible server; use below command
-  - ansible –-version
+  - ansible --version
 
 ![Alt text](picture/2.JPG)
 
